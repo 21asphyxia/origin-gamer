@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Grind';
+    src: url('../Grind_Demolished.ttf')  format('truetype'),
+         url('../Grind_Demolished.woff') format('woff'),
+         url('../Grind_Demolished.otf')  format('opentype');
+}
+body{
+    background-color: #ffffff;
+}
+
+h1{
+    font-family:"Grind";
+    color: #FFFFFF;
+}
+
+#loginBox{
+    background-color: #161832;
+    border-radius: 5px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 10px;
+}

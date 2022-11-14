@@ -14,9 +14,13 @@
 
 <!-- ==================================================== -->
 
-    <div class="container col-6">
+    <div id="loginBox" class="container p-2 col-6 shadow-lg">
 
-        <h1>Login</h1>
+        <h2 id="pageTitle">Login</h2>
+        <div id="logo" class="d-flex">
+            <img class="align-self-center" src="../dist/logo.png" width="32" height="32" alt="Origin Gamer Logo">
+            <h1 class="align-self-center">Origin Gamer</h1>
+        </div>
         <form action="login.php" method="post">
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" />
