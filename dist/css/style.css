@@ -31,7 +31,8 @@ html,body{
 
 #loginPage #loginBox{
     background-color: #161832;
-    border-radius: 5px;
+    box-shadow: 0px 0px 12px #000000;
+    border-radius: 12px;
     max-width: 700px;
     min-width: 320px;
     padding: 10px;
@@ -46,10 +47,15 @@ html,body{
     background-color: #00021F;
     font-weight: 500;
     padding: 10px;
-    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000000;
+    border-radius: 8px;
     width: 200px;
 }
 
 #loginPage .loginOptions{
     font-size: 0.8rem;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
 }
