@@ -32,7 +32,7 @@
             </div>
             
 
-            <button class="d-flex justify-content-center mx-auto mb-3" type="submit" value="Login">Login</button>
+            <button class="d-flex justify-content-center mx-auto mb-3" type="submit" value="login">Login</button>
         </form>
     </div>
 </body>
