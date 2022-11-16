@@ -2,9 +2,9 @@
 
 @font-face {
     font-family: 'Grind';
-    src: url('../Grind_Demolished.ttf')  format('truetype'),
-         url('../Grind_Demolished.woff') format('woff'),
-         url('../Grind_Demolished.otf')  format('opentype');
+    src: url('../fonts/Grind_Demolished.ttf')  format('truetype'),
+         url('../fonts/Grind_Demolished.woff') format('woff'),
+         url('../fonts/Grind_Demolished.otf')  format('opentype');
 }
 
 *{
@@ -17,6 +17,11 @@ html,body{
     width: 100%;
     height: 100%;
     font-family: 'Poppins', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: white;
 }
 
 #loginPage h2{
@@ -43,6 +48,13 @@ html,body{
     border: none;
 }
 
+.searchBar{
+    background: #161832;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+}
+
 #loginPage button{
     background-color: #00021F;
     font-weight: 500;
@@ -58,4 +70,8 @@ html,body{
 
 input:focus, textarea:focus, select:focus{
     outline: none;
+}
+
+#dashboardPage .username{
+    font-family: 'Grind';
 }
