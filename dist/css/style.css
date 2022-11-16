@@ -51,8 +51,11 @@ a{
 .searchBar{
     background: #161832;
     border-radius: 8px;
-    width: 100%;
     padding: 10px;
+}
+
+#dashboardPage .me-6{
+    margin-right: 200px;
 }
 
 #loginPage button{
