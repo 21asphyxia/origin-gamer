@@ -20,7 +20,7 @@ html,body{
     overflow-y: hidden
 }
 
-a{
+a,a:hover{
     text-decoration: none;
     color: white;
 }
@@ -49,10 +49,8 @@ a{
     border: none;
 }
 
-.searchBar{
-    background: #161832;
-    border-radius: 8px;
-    padding: 10px;
+.sidebar{
+    width: 14rem;
 }
 
 #dashboardPage .me-6{
@@ -78,6 +76,7 @@ input:focus, textarea:focus, select:focus{
 
 #dashboardPage .username{
     font-family: 'Grind';
+    max-width: max-content;
 }
 
 #dashboardPage{
@@ -88,15 +87,47 @@ input:focus, textarea:focus, select:focus{
     background: #00021F;
 }
 
+.nav-item a{
+    margin: 0;
+    width: 100%;
+}
+
 .nav-btn{
-    border:solid #161832 3px;
+    font-family: 'Grind';
+    border: 4px solid #161832;
+    border-radius: 8px;
+    width: 200px;
+    min-height: 46px;
 }
 
 .box{
     background-color: #161832;
     box-shadow: 0px 0px 12px #000000;
-    width:;
-    height: 100px;
     border-radius: 12px;
     padding: 10px;
 }
+
+.nav-btn.active{
+    background-color: #161832;
+    color: white;
+}
+
+.nav-btn:hover{
+    background-color: #161832;
+}
+
+#sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    box-shadow: 2px 0 4px #000000;
+    transition: width .35s;
+  }
+  
+  #sidebar.collapsed {
+    width: 0;
+  }
+table,thead,tbody,tr{
+    width:100%} 
+

@@ -3,70 +3,50 @@ include '../scripts.php';
 if (!isset($_SESSION['id'])) {
     header('Location: login.php');
 }
-$pageTitle = 'Login';
+$pageTitle = 'Dashboard';
 include_once '../includes/header.php';
 echo'<link rel="stylesheet" href="../dist/css/vendor.min.css">
 <link rel="stylesheet" href="../dist/css/style.css">';
 ?>
 
 <body id="dashboardPage">
-    <nav id="header" class="navbar navbar-expand-md d-flex border-bottom-2 ">
-        <div class="navbar navbar-header flex-fill p-2">
-            <a href="dashboard.php" class="">
-                <img src="../dist/img/logo.png" alt="logo" width="250" class=""> 
-            </a>
-        </div>
-        
-        <div class="pt-1 pe-2 ">
-            <a href="/profile">
-                <img src="../dist/img/user1pfp.png"  width="42" alt="Profile Picture"> 
-                <span class="d-none d-sm-inline username"><?= $_SESSION['name']?></span>
-            </a>
-        </div>
-        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3"><i class="fa fa-bars"></i></button>
-    </nav>
-<!-- Sidebar -->
-<div id="wrapper">
-    <ul class="navbar-nav sidebar md-sm-dis shadow" id="sidebar">
-        <!-- dashboard button -->
-        <li class="nav-item active mt-5">
-            <a class="nav-link" href="../index.php">
-                <button class="nav-btn p-5 d-flex">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></button></a>
-        </li>
-
-        <!-- Products button -->
-        <li class="nav-item active mt-5">
-            <a class="nav-link" href="../index.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Products</span></a>
-        </li>
-        
-        <li class="nav-item active mt-5">
-            <a class="nav-link" href="../index.php">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Profile</span></a>
-        </li>
-
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-    </ul>
-    <main>
-        <div class="mt-5 d-flex justify-content-evenly w-100 h-50">
-            <div class="px-5 box">
-                <div class="">Total Income</div>
-                <div>12,345 Dh</div>
+    <!-- Navbar -->
+    <?php include_once '../includes/navbar.php'; ?>
+    <!-- End of Navbar -->
+    <div id="wrapper">
+    <!-- Sidebar -->
+    <?php include_once '../includes/sidebar.php';?>
+    <!-- End of Sidebar -->
+    <main class="container">
+        <div class="mt-5 d-flex justify-content-evenly w-100 mb-5">
+            <div class="ps-3 pe-5 py-3 box">
+                <div class="mb-5">Total Income</div>
+                <div class="fw-bold">12,345 Dh</div>
             </div>
-            <div class="px-5 box">
-                <div>Total Income</div>
-                <div>12,345 Dh</div>
+            <div class="ps-3 pe-5 py-3 box">
+                <div class="mb-5">Total Orders</div>
+                <div class="fw-bold">1234 Orders</div>
             </div>
         </div>
-        <div class="box ">
-            <table>
-                
+        <div class="box table-responsive">
+        <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th class="fw-bold"scope="col">All Products</th>
+                    </tr>
+                    <tr>
+                        <th class="text-secondary fs-7 " scope="col">#</th>
+                        <th class="text-secondary fs-7 " scope="col">Id Customer</th>
+                        <th class="text-secondary fs-7 " scope="col">Customer Name</th>
+                        <th class="text-secondary fs-7 " scope="col">City</th>
+                        <th class="text-secondary fs-7 " scope="col">Order Date</th>
+                        <th class="text-secondary fs-7 " scope="col">Status</th>
+                        <th class="text-secondary fs-7 " scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
             </table>
         </div>
     </main>
