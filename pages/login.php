@@ -17,7 +17,7 @@ include_once '../includes/header.php';
         </div>
         <form action="../scripts.php" method="post">
             <div class="mb-3">
-                <input class="w-75 p-1 d-block mx-auto rounded px-3 " type="text" name="email" id="email" placeholder= "&#xf0e0;   E-mail" style="font-family:poppins, FontAwesome" onkeyup="validateEmail()"/>
+                <input class="w-75 d-block mx-auto rounded px-3 py-2 " type="text" name="email" id="email" placeholder= "&#xf0e0;   E-mail" style="font-family:poppins, FontAwesome" onkeyup="validateEmail()"/>
                 <!-- email error -->
                 <?php if (isset($_SESSION['emailError'])){
                     echo "<div class='w-75 mx-auto text-danger' role='alert'>".$_SESSION['emailError']."</div>"; 
@@ -26,7 +26,7 @@ include_once '../includes/header.php';
                 <div id="emailError" class="w-75 mx-auto text-danger d-none">Please enter a valid E-mail</div>
             </div>
             <div class="mb-3">
-                <input class="w-75 p-1 mb-3 d-block mx-auto rounded px-3" type="password" name="password" id="password" placeholder= "&#xf084;   Password" style="font-family:poppins, FontAwesome"/>
+                <input class="w-75 mb-3 d-block mx-auto rounded px-3 py-2" type="password" name="password" id="password" placeholder= "&#xf084;   Password" style="font-family:poppins, FontAwesome"/>
                 <!-- password error -->
                 <?php if (isset($_SESSION['passwordError'])){
                     echo "<div class='w-75 mx-auto text-danger' role='alert'>".$_SESSION['passwordError']."</div>"; 
