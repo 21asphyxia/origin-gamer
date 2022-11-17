@@ -13,7 +13,7 @@
 
         <!-- Products button -->
         <li class="nav-item  mt-5 mx-auto">
-            <a class="" href="../index.php">
+            <a class="" href="products.php">
             <button class="nav-btn ">
                 <i class="bi bi-controller"></i>
                 <span>Products</span></button></a>

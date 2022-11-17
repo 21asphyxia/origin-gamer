@@ -79,7 +79,7 @@ input:focus, textarea:focus, select:focus{
     max-width: max-content;
 }
 
-#dashboardPage{
+#dashboardPage,#productsPage{
     background: #161832;
 }
 
