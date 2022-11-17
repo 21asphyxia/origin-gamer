@@ -35,7 +35,7 @@ function login() {
                 // if remember me is checked
                 if (isset($_POST['remember'])) {
                     // set cookie for 1 month
-                    setcookie('id', $row['id'], time() + 60 * 60 * 24 * 7);
+                    setcookie('id', $row['id'], time() + 60 * 60 * 24 * 7,"/");
                     setcookie('email', $row['email'], time() + 60 * 60 * 24 * 7);
                     setcookie('name', $row['name'], time() + 60 * 60 * 24 * 7);
                 }
