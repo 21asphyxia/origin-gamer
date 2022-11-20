@@ -25,26 +25,31 @@ a,a:hover{
     color: white;
 }
 
-#loginPage h2{
+#pageTitle{
     font-family:"Grind";
     font-size: 1.5rem;
 }
 
-#loginPage #logo img{
+#loginRegisterPage #logo img{
     width: 100%;
     height: 100%;
 }
 
-#loginPage #loginBox{
+#loginRegisterPage #loginRegisterBox{
     background-color: #161832;
     box-shadow: 0px 0px 12px #000000;
     border-radius: 12px;
     max-width: 700px;
-    min-width: 320px;
+    min-width: 300px;
     padding: 10px;
 }
 
-#loginPage input[type=text], input[type=password] {
+#loginRegisterPage p{
+    font-size: 14px;
+}
+
+#loginRegisterPage input[type=text], input[type=password] {
+    font-family:'poppins','FontAwesome';
     background-color: #00021F;
     border: none;
 }
@@ -57,7 +62,7 @@ a,a:hover{
     margin-right: 200px;
 }
 
-#loginPage button{
+#loginRegisterPage button{
     background-color: #00021F;
     font-weight: 500;
     padding: 10px;
@@ -66,7 +71,11 @@ a,a:hover{
     width: 200px;
 }
 
-#loginPage .loginOptions{
+#loginRegisterPage a{
+    width: 200px;
+}
+
+#loginRegisterPage .loginOptions{
     font-size: 0.8rem;
 }
 
@@ -131,3 +140,8 @@ input:focus, textarea:focus, select:focus{
 table,thead,tbody,tr{
     width:100%} 
 
+@media screen and (max-width: 425px) {
+    #pageTitle{
+        font-size: 1rem;
+    }
+}
