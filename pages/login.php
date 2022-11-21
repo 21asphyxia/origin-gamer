@@ -17,7 +17,7 @@ include_once '../includes/header.php';
         </div>
         <form action="../scripts.php" method="post">
             <div class="mb-3">
-                <input class="w-75 d-block mx-auto rounded px-3 py-2 " type="text" name="email" id="email" placeholder= "&#xf0e0;   E-mail" style="font-family:poppins, FontAwesome" oninput="validateName()">
+                <input class="w-75 d-block mx-auto rounded px-3 py-2 " type="text" name="email" id="email" placeholder= "&#xf0e0;   E-mail" oninput="validateEmail()">
                 <!-- email error -->
                 <?php if (isset($_SESSION['emailError'])){
                     echo "<div class='w-75 mx-auto text-danger' role='alert'>".$_SESSION['emailError']."</div>"; 
@@ -26,14 +26,14 @@ include_once '../includes/header.php';
                 <div id="emailError" class="w-75 mx-auto text-danger d-none">Please enter a valid E-mail</div>
             </div>
             <div class="mb-5">
-                <input class="w-75 d-block mx-auto rounded px-3 py-2" type="password" name="password" id="password" placeholder= "&#xf084;   Password" style="font-family:poppins, FontAwesome">
+                <input class="w-75 d-block mx-auto rounded px-3 py-2" type="password" name="password" id="password" placeholder= "&#xf084;   Password">
                 <!-- password error -->
                 <?php if (isset($_SESSION['passwordError'])){
                     echo "<div class='w-75 mx-auto text-danger' role='alert'>".$_SESSION['passwordError']."</div>"; 
                     unset($_SESSION['passwordError']);
                 } ?>
             </div>
-            <button class="d-flex justify-content-center mx-auto mb-5" type="submit" name="login" id="loginSubmit" onclick="validateEmail()">Login</button>
+            <button class="d-flex justify-content-center mx-auto mb-5" type="submit" name="login" id="loginRegisterSubmit" onclick="validateEmail()">Login</button>
         </form>
         <div class="d-flex-column justify-content-center">
             <p class="text-center mb-2">Don't have an account?</p> 

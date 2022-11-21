@@ -6,7 +6,7 @@
         <!-- dashboard button -->
         <li class="nav-item mt-5 mx-auto">
             <a class="" href="../index.php">
-                <button class="nav-btn active ">
+                <button class="nav-btn <?php if($pageTitle=='Dashboard'){echo "active";} ?>">
                 <i class="bi bi-clipboard-data-fill"></i>
                 <span>Dashboard</span></button></a>
         </li>
@@ -14,7 +14,7 @@
         <!-- Products button -->
         <li class="nav-item  mt-5 mx-auto">
             <a class="" href="products.php">
-            <button class="nav-btn ">
+            <button class="nav-btn <?php if($pageTitle=='Products'){echo "active";} ?>">
                 <i class="bi bi-controller"></i>
                 <span>Products</span></button></a>
             
@@ -22,7 +22,7 @@
         
         <li class="nav-item  mt-5 mx-auto">
             <a class="" href="../index.php">
-                <button class="nav-btn ">
+                <button class="nav-btn <?php if($pageTitle=='Profile'){echo "active";} ?>">
                 <i class="bi bi-person-circle"></i>
                 <span>Profile</span></button></a>
         </li>

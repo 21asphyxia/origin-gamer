@@ -5,8 +5,6 @@ if (!isset($_SESSION['id'])) {
 }
 $pageTitle = 'Dashboard';
 include_once '../includes/header.php';
-echo'<link rel="stylesheet" href="../dist/css/vendor.min.css">
-<link rel="stylesheet" href="../dist/css/style.css">';
 ?>
 
 <body id="dashboardPage">
@@ -17,7 +15,7 @@ echo'<link rel="stylesheet" href="../dist/css/vendor.min.css">
     <!-- Sidebar -->
     <?php include_once '../includes/sidebar.php';?>
     <!-- End of Sidebar -->
-    <main class="container">
+    <main class="container mt-5">
         <div class="mt-5 d-flex justify-content-evenly w-100 mb-5">
             <div class="ps-3 pe-5 py-3 box">
                 <div class="mb-5">Total Income</div>
@@ -28,26 +26,34 @@ echo'<link rel="stylesheet" href="../dist/css/vendor.min.css">
                 <div class="fw-bold">1234 Orders</div>
             </div>
         </div>
-        <div class="box table-responsive">
-        <table class="table table-borderless">
-                <thead>
+        <div class="box">
+            <span class="fw-bold ps-3">Recent Orders</span>
+            <div class="table-responsive mt-3">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="text-secondary fs-7 " scope="col">#</th>
+                            <th class="text-secondary fs-7 " scope="col">Id Customer</th>
+                            <th class="text-secondary fs-7 " scope="col">Customer Name</th>
+                            <th class="text-secondary fs-7 " scope="col">City</th>
+                            <th class="text-secondary fs-7 " scope="col">Order Date</th>
+                            <th class="text-secondary fs-7 " scope="col">Status</th>
+                            <th class="text-secondary fs-7 " scope="col">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <tr>
-                        <th class="fw-bold"scope="col">All Products</th>
-                    </tr>
-                    <tr>
-                        <th class="text-secondary fs-7 " scope="col">#</th>
-                        <th class="text-secondary fs-7 " scope="col">Id Customer</th>
-                        <th class="text-secondary fs-7 " scope="col">Customer Name</th>
-                        <th class="text-secondary fs-7 " scope="col">City</th>
-                        <th class="text-secondary fs-7 " scope="col">Order Date</th>
-                        <th class="text-secondary fs-7 " scope="col">Status</th>
-                        <th class="text-secondary fs-7 " scope="col">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
+                            <td class=" fs-7 " scope="col">1</td>
+                            <td class=" fs-7 " scope="col">25</td>
+                            <td class=" fs-7 " scope="col">Mouad El Amraoui</td>
+                            <td class=" fs-7 " scope="col">Kenitra</td>
+                            <td class=" fs-7 " scope="col">Order Date</td>
+                            <td class=" fs-7 " scope="col">Paid</td>
+                            <td class=" fs-7 " scope="col">125DH</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 </div>

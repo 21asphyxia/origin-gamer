@@ -50,4 +50,13 @@ function login() {
     // Redirect to the dashboard
     header('Location: index.php');
 }
+
+function getProducts(){
+    //SQL SELECT QUERY
+    $sql = "SELECT * FROM products ORDER BY id";
+    //PERFORM THE QUERY AND GET RESULT
+    $result = mysqli_query($GLOBALS['conn'],$sql);
+    return $result;
+    
+         }
 ?>
