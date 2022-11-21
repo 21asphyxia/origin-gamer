@@ -25,26 +25,31 @@ a,a:hover{
     color: white;
 }
 
-#loginPage h2{
+#pageTitle{
     font-family:"Grind";
     font-size: 1.5rem;
 }
 
-#loginPage #logo img{
+#loginRegisterPage #logo img{
     width: 100%;
     height: 100%;
 }
 
-#loginPage #loginBox{
+#loginRegisterPage #loginRegisterBox{
     background-color: #161832;
     box-shadow: 0px 0px 12px #000000;
     border-radius: 12px;
     max-width: 700px;
-    min-width: 320px;
+    min-width: 300px;
     padding: 10px;
 }
 
-#loginPage input[type=text], input[type=password] {
+#loginRegisterPage p{
+    font-size: 14px;
+}
+
+#loginRegisterPage input[type=text], input[type=password] {
+    font-family:'poppins','FontAwesome';
     background-color: #00021F;
     border: none;
 }
@@ -57,7 +62,7 @@ a,a:hover{
     margin-right: 200px;
 }
 
-#loginPage button{
+#loginRegisterPage button{
     background-color: #00021F;
     font-weight: 500;
     padding: 10px;
@@ -66,20 +71,26 @@ a,a:hover{
     width: 200px;
 }
 
-#loginPage .loginOptions{
+#loginRegisterPage a{
+    width: 200px;
+}
+
+#loginRegisterPage .loginOptions{
     font-size: 0.8rem;
 }
 
-input:focus, textarea:focus, select:focus{
+.form-control:focus,input:focus, textarea:focus, select:focus{
+    background-color: #00021F;
     outline: none;
+    color : white;
 }
 
-#dashboardPage .username{
+.username{
     font-family: 'Grind';
     max-width: max-content;
 }
 
-#dashboardPage{
+#dashboardPage,#productsPage{
     background: #161832;
 }
 
@@ -116,6 +127,10 @@ input:focus, textarea:focus, select:focus{
     background-color: #161832;
 }
 
+.fs-7{
+    font-size: 0.9rem;
+}
+
 #sidebar {
     position: absolute;
     left: 0;
@@ -129,5 +144,74 @@ input:focus, textarea:focus, select:focus{
     width: 0;
   }
 table,thead,tbody,tr{
-    width:100%} 
+    width:100%
+}
 
+th{
+    max-width: max-content;
+}
+
+#addButton,#addButton i{
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+}
+
+#save-button, #update-button{
+    background: #00021F;
+    box-shadow: 0px 0px 10px #000000;
+    border-radius: 5px;
+    color:white;
+}
+
+#cancel-button{
+    background-color: #161832;
+    box-shadow: 0px 0px 10px #000000;
+    border-radius: 5px;
+    color:white;
+}
+
+#cancel-button:active, #save-button:active, #update-button:active{
+    background-color: #00021F;
+    border: none;
+    
+}
+
+.btn:disabled{
+    border: none;
+}
+
+.modal-content{
+    background-color: #161832;
+    box-shadow: 0px 0px 12px #000000;
+    border-radius: 12px;
+}
+
+.form-control,.form-select{
+    font-family:'poppins','FontAwesome';
+    background-color: #00021F;
+    border: none;
+    color: white;
+}
+
+.form-select:required:invalid {
+    color: grey;
+}
+
+.modal-header{
+    border-bottom: grey solid 1px;
+}
+
+.modal-footer{
+    border-top: grey solid 1px;
+}
+  option {
+    color: white;
+  }
+
+@media screen and (max-width: 425px) {
+    #pageTitle{
+        font-size: 1rem;
+    }
+}
