@@ -20,7 +20,7 @@ include_once '../includes/header.php';
         <div class="box py-4">
             <div class="d-flex justify-content-between">
                 <span class="fw-bold ps-3">All Products</span>
-                <button class="btn btn-primary rounded p-0 me-3">Add Product</button>
+                <button class="btn rounded px-3 me-3" id="addButton" onclick="createTask()"><i class="fa fa-plus pe-3"></i>Add Product</button>
             </div>
             <div class="table-responsive mt-3">
                 <table class="table table-borderless">
@@ -53,70 +53,63 @@ include_once '../includes/header.php';
 								<td class=" fs-7 " scope="col">'.$row["description"].'</td>
 								<td class=" fs-7 " scope="col">'.$row["stock"].'</td>
 								<td class=" fs-7 " scope="col">'.$row["price"].'</td>
+								<td class="d-flex justify-content-around" style="visibility: hidden;" ><a href="update.php?showmodal=" ><i class="bi fs-6 text-primary bi-pencil-square" ></i></a><i class="bi fs-6 text-danger bi-x-square"></i></td>
                         	</tr>';}}
 						?>
                     </tbody>
                 </table>
             </div>
         </div>
-        <form class="modalshow " id="form" tabindex="-1" aria-labelledby="exampleModalLabel"
-	aria-hidden="true">
+        <form class="modal fade " id="form" tabindex="-1" action="../scripts.php" method="post" oninput="enableADD()">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-header mb-3">
 					<h5 class="modal-title">Add Product</h5>
 					<button type="button" id="close-button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<div class="mb-3">
-						<label for="taskTitle" class="col-form-label">Title</label>
-						<input type="text" class="form-control" onkeyup="enableADD()" onCut="return false" id="taskTitle">
-						<div id="msg"></div>
+						<input type="text" name="productName" class="form-control" id="productName" placeholder="Product Name">
+						<?php if(isset($_SESSION['titleErr'])){
+							echo '<div class="alert alert-red mt-2" role="alert">'.$_SESSION['titleErr'].'</div>';
+							unset($_SESSION['titleErr']);
+						}?>
 					</div>
 					<div class="mb-3">
-						<label class="col-form-label">Type</label>
-						<div class="form-check ms-3">
-							<input class="form-check-input" type="radio" value="Feature" name="type" id="feature" checked>
-							<label class="form-check-label" for="feature">Feature</label>
-						</div>
-						<div class="form-check ms-3">
-							<input class="form-check-input" type="radio" value="Bug" name="type" id="bug">
-							<label class="form-check-label" for="bug">Bug</label>
-						</div>
+						<input type="text" name="brand" class="form-control" id="brandName" placeholder="Brand">
 					</div>
 					<div class="mb-3">
-						<label for="Priority" class="col-form-label">Priority</label>
-						<select class="form-select" aria-label="Default select example" id="priority">
-							<option selected disabled hidden value="default">Please select</option>
-							<option value="Low">Low</option>
-							<option value="Medium">Medium</option>
-							<option value="High">High</option>
-							<option value="Critical">Critical</option>
+						<select class="form-select" name="category" id="category" required>
+							<option selected disabled hidden value="">Category</option>
+							<option value="Processors">Processors</option>
+							<option value="Motherboards">Motherboards</option>
+							<option value="RAM">RAM</option>
+							<option value="Graphic Cards">Graphic Cards</option>
+							<option value="Keyboards">Keyboards</option>
+							<option value="Mice">Mice</option>
+							<option value="Headsets">Headsets</option>
+							<option value="Mousepads">Mousepads</option>
 						</select>
 					</div>
 					<div class="mb-3">
-						<label for="status" class="col-form-label">Status</label>
-						<select id="status" class="form-select" aria-label="Default select example">
-							<option selected disabled hidden value="default">Please select</option>
-							<option value="to-do-tasks">To do</option>
-							<option value="in-progress-tasks">In progress</option>
-							<option value="done-tasks">Done</option>
-						</select>
+						<input type="number" name="stock" class="form-control" id="stock" placeholder="Stock">
 					</div>
 					<div class="mb-3">
-						<label for="date" class="col-form-label">Date</label>
-						<input type="date" class="form-control" id="date">
+						<input type="number" name="price" class="form-control" id="price" placeholder="Price">
 					</div>
 					<div class="mb-3">
-						<label for="description" class="col-form-label">Description</label>
-						<textarea class="form-control" id="description"></textarea>
+						<input type="file" name="image" class="form-control" id="image">
+					</div>
+					<div class="mb-3">
+						<textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-light text-black border" data-bs-dismiss="modal" id="cancel-button">Cancel</button>
-					<button type="button" onclick="deleteTask()" class="btn btn-outline-danger border" id="delete-button">Delete</button>
-					<button type="button" onclick="saveTask()" id="save-button" class="btn btn-primary" disabled>Save</button>
-					<button type="button" onclick="updateTask()" class="btn btn-primary" id="update-button">Update</button>
+					<button type="button" class="btn" data-bs-dismiss="modal" id="cancel-button">Cancel</button>
+					<button type="button" name="delete" class="btn btn-outline-danger border" id="delete-button">Delete</button>
+					<button type="submit" name="delete" class="d-none" id="hiddenDelete">Delete</button>
+					<button type="submit" name="save" id="save-button" class="btn">Save</button>
+					<button type="submit" name="update" class="btn" id="update-button">Update</button>
 				</div>
 			</div>
 		</div>

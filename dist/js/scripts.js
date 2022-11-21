@@ -1,3 +1,23 @@
+let form = document.getElementById("form");
+let productName = document.getElementById("productName");
+let brand = document.getElementById("brandName");
+let category = document.getElementById("category");
+let stock = document.getElementById("stock");
+let price = document.getElementById("price");
+let image = document.getElementById("image");
+let description = document.getElementById("description");
+
+// Enable save and update button when all inputs are filled
+let enableADD = () => {
+    if (productName.value != "" && brand.value != "" && category.value != "" && stock.value != "" && price.value != "" && image.value != "" && description.value != "") {
+        document.getElementById("save-button").disabled = false;
+        document.getElementById("update-button").disabled=false;
+    } else {
+        document.getElementById("save-button").disabled=true;
+        document.getElementById("update-button").disabled=true;
+    }
+}
+
 function validateEmail(){
     let email = document.getElementById('email');
     let emailError = document.getElementById('emailError');
@@ -62,3 +82,28 @@ function validateRegister(){
     validatePassword();
     validateConfirmPassword();
 }
+
+function createTask() {
+    // initialiser task form
+    initTaskForm();
+    // Afficher le boutton save
+    document.getElementById("save-button").classList.remove("d-none");
+    document.getElementById("cancel-button").classList.remove("d-none");
+    // Ouvrir modal form
+    $(document).ready(function() {
+      $('#form').modal('show');
+  });
+  }
+
+function initTaskForm() {
+    // Clear task form from data
+    form.reset();
+    // Hide all action buttons
+  
+    document.getElementById("save-button").classList.add("d-none");
+    document.getElementById("cancel-button").classList.add("d-none");
+    document.getElementById("delete-button").classList.add("d-none");
+    document.getElementById("update-button").classList.add("d-none");
+  
+    enableADD();
+  }
