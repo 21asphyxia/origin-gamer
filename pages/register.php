@@ -21,9 +21,9 @@ include_once '../includes/header.php';
                 <input class="w-75 d-block mx-auto rounded px-3 py-2 " type="text" name="fullName" id="fullName" placeholder= "&#xf007;   Full Name" oninput="validateName()">
                 <!-- email error -->
                 <?php 
-                // if (isset($_SESSION['emailError'])){
-                //     echo "<div class='w-75 mx-auto text-danger' role='alert'>".$_SESSION['emailError']."</div>"; 
-                //     unset($_SESSION['emailError']);} 
+                if (isset($_SESSION['emailError'])){
+                    echo "<div class='w-75 mx-auto text-danger' role='alert'>".$_SESSION['emailError']."</div>"; 
+                    unset($_SESSION['emailError']);} 
                     ?>
                 <div id="nameError" class="w-75 mx-auto text-danger d-none">Please enter your name.</div>
             </div>

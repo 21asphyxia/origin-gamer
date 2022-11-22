@@ -79,6 +79,10 @@ a,a:hover{
     font-size: 0.8rem;
 }
 
+#productsPage main{
+    width: 90%;
+}
+
 .form-control:focus,input:focus, textarea:focus, select:focus{
     background-color: #00021F;
     outline: none;
@@ -206,6 +210,15 @@ th{
 .modal-footer{
     border-top: grey solid 1px;
 }
+
+.actionsIcons{
+    height: 126px
+}
+
+tr{
+    border-bottom: grey solid 1px;
+}
+
   option {
     color: white;
   }
