@@ -20,10 +20,15 @@
             
         </li>
         
-        <li class="nav-item  mt-5 mx-auto">
+        <li class="nav-item  mt-5 mx-auto mb-5">
             <a class="" href="../index.php">
                 <button class="nav-btn <?php if($pageTitle=='Profile'){echo "active";} ?>">
                 <i class="bi bi-person-circle"></i>
                 <span>Profile</span></button></a>
         </li>
+        <li class="nav-item  mt-5 mx-auto">
+            <a class="" href="../scripts.php?logout=true">
+                <button class="nav-btn">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span></button></a>
     </ul>
