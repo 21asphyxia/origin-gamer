@@ -122,6 +122,10 @@ a,a:hover{
     padding: 10px;
 }
 
+.list{
+    max-height: 80vh;
+}
+
 .nav-btn.active{
     background-color: #161832;
     color: white;
@@ -212,7 +216,7 @@ th{
 }
 
 .actionsIcons{
-    height: 126px
+    height: 97px;
 }
 
 tr{

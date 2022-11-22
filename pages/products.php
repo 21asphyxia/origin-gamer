@@ -16,7 +16,7 @@ include_once '../includes/header.php';
     <?php include_once '../includes/sidebar.php';?>
     <!-- End of Sidebar -->
     
-    <main class="pt-5 mx-auto">
+    <main class="pt-3 mx-auto">
 	<?php if (isset($_SESSION['message'])){
 				echo "<div ";
 
@@ -32,7 +32,7 @@ include_once '../includes/header.php';
 					echo '<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></span>
 				</div>';
 				} ?>
-        <div class="box py-4">
+        <div class="box py-4 list overflow-auto">
             <div class="d-flex justify-content-between">
                 <span class="fw-bold ps-3">All Products</span>
                 <button class="btn rounded px-3 me-3" id="addButton" onclick="createProduct()"><i class="fa fa-plus pe-3"></i>Add Product</button>
@@ -62,7 +62,7 @@ include_once '../includes/header.php';
 							{
 							echo'
 							<tr>
-								<td class=" fs-7 text-center align-middle " scope="col">'.$row["id"].'</td>
+								<td class=" fs-7 text-center align-middle " scope="col">#'.$row["id"].'</td>
 								<td class=" fs-7 text-center align-middle " scope="col"><img src="../';
 								if($row["image"] == null)
 								{
@@ -74,7 +74,7 @@ include_once '../includes/header.php';
 								}
 								
 								
-								echo'" width="100" height="100"></td>
+								echo'" width="72" height="72"></td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["name"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["brand"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["category"].'</td>
