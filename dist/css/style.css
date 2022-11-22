@@ -210,6 +210,15 @@ th{
 .modal-footer{
     border-top: grey solid 1px;
 }
+
+.actionsIcons{
+    height: 126px
+}
+
+tr{
+    border-bottom: grey solid 1px;
+}
+
   option {
     color: white;
   }

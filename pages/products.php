@@ -62,15 +62,26 @@ include_once '../includes/header.php';
 							{
 							echo'
 							<tr>
-								<td class=" fs-7 text-center" scope="col">'.$row["id"].'</td>
-								<td class=" fs-7 text-center " scope="col">'.$row["image"].'</td>
-								<td class=" fs-7 text-center" scope="col">'.$row["name"].'</td>
-								<td class=" fs-7 text-center" scope="col">'.$row["brand"].'</td>
-								<td class=" fs-7 text-center" scope="col">'.$row["category"].'</td>
-								<td class=" fs-7 text-center" scope="col">'.$row["description"].'</td>
-								<td class=" fs-7 text-center" scope="col">'.$row["stock"].'</td>
-								<td class=" fs-7 text-center" scope="col">'.$row["price"].'</td>
-								<td class="d-flex justify-content-around">
+								<td class=" fs-7 text-center align-middle " scope="col">'.$row["id"].'</td>
+								<td class=" fs-7 text-center align-middle " scope="col"><img src="../';
+								if($row["image"] == null)
+								{
+									echo 'dist/img/default.png';
+								}
+								else
+								{
+									echo $row["image"];
+								}
+								
+								
+								echo'" width="100" height="100"></td>
+								<td class=" fs-7 text-center align-middle" scope="col">'.$row["name"].'</td>
+								<td class=" fs-7 text-center align-middle" scope="col">'.$row["brand"].'</td>
+								<td class=" fs-7 text-center align-middle" scope="col">'.$row["category"].'</td>
+								<td class=" fs-7 text-center align-middle" scope="col">'.$row["description"].'</td>
+								<td class=" fs-7 text-center align-middle" scope="col">'.$row["stock"].'</td>
+								<td class=" fs-7 text-center align-middle" scope="col">'.$row["price"].'</td>
+								<td class="actionsIcons d-flex justify-content-around align-items-center">
 									<a href="products.php?editProduct='.$row["id"].'"><i class="bi fs-6 text-primary bi-pencil-square" ></i>
 									</a>
 									<a href="../scripts.php?deleteProduct='.$row["id"].'"><i class="bi bi-trash fs-6 text-danger"></i>
@@ -92,7 +103,7 @@ include_once '../includes/header.php';
 			}
 		}
 		?>
-        <form class="modal fade <?php if(isset($_GET['editProduct'])){echo 'show';}?>" id="form" tabindex="-1" action="../scripts.php" method="post" oninput="enableADD()">
+        <form class="modal fade <?php if(isset($_GET['editProduct'])){echo 'show';}?>" id="form" tabindex="-1" action="../scripts.php" method="post" oninput="enableADD()" enctype="multipart/form-data">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header mb-3">
@@ -109,9 +120,9 @@ include_once '../includes/header.php';
 						if(isset($row['name'])){
 							echo $row['name'];
 						}?>">
-						<?php if(isset($_SESSION['titleErr'])){
-							echo '<div class="alert alert-red mt-2" role="alert">'.$_SESSION['titleErr'].'</div>';
-							unset($_SESSION['titleErr']);
+						<?php if(isset($_SESSION['nameErr'])){
+							echo '<div class="alert alert-danger mt-2" role="alert">'.$_SESSION['nameErr'].'</div>';
+							unset($_SESSION['nameErr']);
 						}?>
 					</div>
 					<div class="mb-3">
@@ -119,6 +130,10 @@ include_once '../includes/header.php';
 						if(isset($row['brand'])){
 							echo $row['brand'];
 						}?>">
+						<?php if(isset($_SESSION['brandErr'])){
+							echo '<div class="alert alert-danger mt-2" role="alert">'.$_SESSION['brandErr'].'</div>';
+							unset($_SESSION['brandErr']);
+						}?>
 					</div>
 					<div class="mb-3">
 						<select class="form-select" name="category" id="category" required>
@@ -141,27 +156,47 @@ include_once '../includes/header.php';
 							<option value="Mousepads" <?php if(isset($row['category'])){
 							if($row['category'] == "Mousepads") echo "selected";}?>>Mousepads</option>
 						</select>
+						<?php if(isset($_SESSION['categoryErr'])){
+							echo '<div class="alert alert-danger mt-2" role="alert">'.$_SESSION['categoryErr'].'</div>';
+							unset($_SESSION['categoryErr']);
+						}?>
 					</div>
 					<div class="mb-3">
 						<input type="number" name="stock" class="form-control" id="stock" placeholder="Stock" value="<?php
 						if(isset($row['stock'])){
 							echo $row['stock'];
 						}?>">
+						<?php if(isset($_SESSION['stockErr'])){
+							echo '<div class="alert alert-danger mt-2" role="alert">'.$_SESSION['stockErr'].'</div>';
+							unset($_SESSION['stockErr']);
+						}?>
 					</div>
 					<div class="mb-3">
 						<input type="number" name="price" class="form-control" id="price" placeholder="Price" value="<?php
 						if(isset($row['price'])){
 							echo $row['price'];
 						}?>">
+						<?php if(isset($_SESSION['priceErr'])){
+							echo '<div class="alert alert-danger mt-2" role="alert">'.$_SESSION['priceErr'].'</div>';
+							unset($_SESSION['priceErr']);
+						}?>
 					</div>
 					<div class="mb-3">
-						<input type="file" name="image" class="form-control" id="image">
+						<input type="file" name="productImage" class="form-control" id="image">
+						<?php if(isset($_SESSION['imageError'])){
+							echo '<div class="alert alert-danger mt-2" role="alert">'.$_SESSION['imageError'].'</div>';
+							unset($_SESSION['imageError']);
+						}?>
 					</div>
 					<div class="mb-3">
 						<textarea class="form-control" name="description" id="description" placeholder="Description" ><?php
 						if(isset($row['description'])){
 							echo $row['description'];
 						}?></textarea>
+						<?php if(isset($_SESSION['descriptionErr'])){
+							echo '<div class="alert alert-danger mt-2" role="alert">'.$_SESSION['descriptionErr'].'</div>';
+							unset($_SESSION['descriptionErr']);
+						}?>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -196,5 +231,9 @@ include_once '../includes/header.php';
 			$(document).ready(function() {
 			  $('#form').modal('show');
 		  }); </script>'";}
-// unset($_GET['editProduct']);
+		  
+	if(isset($_SESSION['error'])){
+		echo $_SESSION['error'];
+		unset($_SESSION['error']);
+	}
 ?>
