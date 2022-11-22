@@ -9,7 +9,7 @@ let description = document.getElementById("description");
 
 // Enable save and update button when all inputs are filled
 let enableADD = () => {
-    if (productName.value != "" && brand.value != "" && category.value != "" && stock.value != "" && price.value != "" && image.value != "" && description.value != "") {
+    if (productName.value != "" && brand.value != "" && category.value != "" && stock.value != "" && price.value != "" && description.value != "") {
         document.getElementById("save-button").disabled = false;
         document.getElementById("update-button").disabled=false;
     } else {
@@ -83,7 +83,8 @@ function validateRegister(){
     validateConfirmPassword();
 }
 
-function createTask() {
+function createProduct() {
+    console.log("1");
     // initialiser task form
     initTaskForm();
     // Afficher le boutton save
@@ -98,6 +99,14 @@ function createTask() {
 function initTaskForm() {
     // Clear task form from data
     form.reset();
+    document.getElementById("productName").value = "";
+    document.getElementById("brandName").value = "";
+    document.getElementById("category").value = "";
+    document.getElementById("stock").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("image").value = "";
+    document.getElementById("description").value = "";
+    
     // Hide all action buttons
   
     document.getElementById("save-button").classList.add("d-none");
@@ -107,3 +116,26 @@ function initTaskForm() {
   
     enableADD();
   }
+
+  $(document).on('click', '#delete-button', function(e) {
+    swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+          $('#hiddenDelete').click();
+        // });
+        
+      }
+    });
+  });

@@ -7,8 +7,9 @@ session_start();
 //ROUTING
 if(isset($_POST['login']))        login();
 if(isset($_POST['save']))         saveProduct();
-if(isset($_POST['update']))      updateTask();
-if(isset($_POST['delete']))      deleteTask();
+if(isset($_POST['update']))      updateProduct();
+if(isset($_POST['delete']))      deleteProduct();
+if(isset($_GET['deleteProduct']))      deleteProductbyButton();
 
 
 
@@ -33,13 +34,6 @@ function login() {
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['name'] = $row['name'];
-                // if remember me is checked
-                if (isset($_POST['remember'])) {
-                    // set cookie for 1 month
-                    setcookie('id', $row['id'], time() + 60 * 60 * 24 * 7,"/");
-                    setcookie('email', $row['email'], time() + 60 * 60 * 24 * 7);
-                    setcookie('name', $row['name'], time() + 60 * 60 * 24 * 7);
-                }
             } else {
                 $_SESSION['passwordError']="Incorrect password";
             }
@@ -58,6 +52,14 @@ function getProducts(){
     //PERFORM THE QUERY AND GET RESULT
     $result = mysqli_query($GLOBALS['conn'],$sql);
     return $result;
+}
+
+function getInputs(){
+    //SQL SELECT QUERY
+    $sql = "SELECT * FROM products where id = {$_GET['editProduct']}";
+    //PERFORM THE QUERY AND GET RESULT
+    $inputs = mysqli_query($GLOBALS['conn'],$sql);
+    return $inputs;
 }
 
 function saveProduct(){
@@ -79,15 +81,15 @@ function saveProduct(){
         $sql = "INSERT INTO products (name, brand, category, stock, price, image, description) VALUES ('$_POST[productName]', '$_POST[brand]', '$_POST[category]', '$_POST[stock]', '$_POST[price]', '$_POST[image]', '$_POST[description]')";
         if(mysqli_query($GLOBALS['conn'],$sql))
         {
-            $_SESSION['message'] = "Task has been added successfully !";
+            $_SESSION['message'] = "Product has been added successfully !";
             $_SESSION['msg_type'] = "success";
-            header('location: index.php');
+            header('location: pages/products.php');
         }
         else
         {
-            $_SESSION['message'] = "Task has not been added !";
+            $_SESSION['message'] = "Product has not been added !";
             $_SESSION['msg_type'] = "danger";
-            header('location: index.php');
+            header('location: pages/products.php');
         }
     }
     else
@@ -103,7 +105,7 @@ function saveProduct(){
         $_SESSION['descriptionErr'] = $errors['brand'];
         //launch js script to show already filled fields in modal
         $_SESSION['error'] = "<script type = text/javascript>
-        createTask(); 
+        createProduct(); 
         document.getElementById('productName').value ='".$_POST['productName']."' ;
         document.getElementById('brandName').value = '".$_POST['brand']."';
         document.getElementById('category').value = '".$_POST['category']."';
@@ -111,42 +113,47 @@ function saveProduct(){
         document.getElementById('price').value = '".$_POST['price']."';
         document.getElementById('description').value = '".$_POST['description']."';
         </script>";
-        header('location: index.php');
+        header('location: pages/products.php');
     }
 }
 
+function updateProduct(){
+    //SQL update query
+    $id = $_POST['productId'];
+    $productName = $_POST['productName'];
+    $brand = $_POST['brand'];
+    $category = $_POST['category'];
+    $stock = $_POST['stock'];
+    $price = $_POST['price'];
+    $image = $_POST['image'];
+    $description = $_POST['description'];
+    $sql = "UPDATE products SET name = '$productName',  brand = '$brand', category = '$category', stock = '$stock', price='$price',image = '$image',description = '$description' WHERE id = '$id'";
+    mysqli_query($GLOBALS['conn'],$sql);
 
+    $_SESSION['message'] = "Product has been updated successfully !";
+    $_SESSION['msg_type'] = "success";
+    header('location: pages/products.php');
+}
 
+function deleteProduct(){
+    //SQL delete query
+    $id = $_GET['productId'];
+    $sql = "DELETE FROM products WHERE id='$id'";
+    mysqli_query($GLOBALS['conn'],$sql);
+    
+    $_SESSION['message'] = "Product has been deleted successfully !";
+    $_SESSION['msg_type'] = "success";
+    header('location: pages/products.php');
+}
 
+function deleteProductbyButton(){
+    //SQL delete query
+    $id = $_GET['deleteProduct'];
+    $sql = "DELETE FROM products WHERE id='$id'";
+    mysqli_query($GLOBALS['conn'],$sql);
 
-
-function updateTask()
-    {
-        //SQL update query
-        $id = $_POST['taskId'];
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $type = $_POST['type'];
-        $priority = $_POST['priority'];
-        $status = $_POST['status'];
-        $task_datetime = $_POST['date'];
-        $sql = "UPDATE tasks SET title = '$title', description = '$description', type_id = '$type', priority_id = '$priority', status_id = '$status', task_datetime = '$task_datetime' WHERE id = '$id'";
-        mysqli_query($GLOBALS['conn'],$sql);
-
-        $_SESSION['message'] = "Task has been updated successfully !";
-        $_SESSION['msg_type'] = "success";
-		header('location: index.php');
-    }
-
-    function deleteTask()
-    {
-        //SQL delete query
-        $id = $_POST['taskId'];
-        $sql = "DELETE FROM tasks WHERE id='$id'";
-        mysqli_query($GLOBALS['conn'],$sql);
-        
-        $_SESSION['message'] = "Task has been deleted successfully !";
-        $_SESSION['msg_type'] = "success";
-		header('location: index.php');
-    }
+    $_SESSION['message'] = "Product has been deleted successfully !";
+    $_SESSION['msg_type'] = "success";
+    header('location: pages/products.php');
+}
 ?>

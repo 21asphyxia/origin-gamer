@@ -79,6 +79,10 @@ a,a:hover{
     font-size: 0.8rem;
 }
 
+#productsPage main{
+    width: 90%;
+}
+
 .form-control:focus,input:focus, textarea:focus, select:focus{
     background-color: #00021F;
     outline: none;

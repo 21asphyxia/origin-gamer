@@ -8,7 +8,6 @@
     $password = $_ENV['DB_PASSWORD'];
     $db = $_ENV['DB_DATABASE'];
     //CONNECT TO MYSQL DATABASE USING MYSQLI
-    
     // Create connection
     $conn =  mysqli_connect($servername,$username,$password,$db);
     // Check connection
