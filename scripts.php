@@ -93,7 +93,7 @@ function logout(){
 
 function getProducts(){
     //SQL SELECT QUERY
-    $sql = "SELECT products.id,products.name,products.brand,category.category_name,products.stock,products.price,products.image,products.description FROM products INNER JOIN category ON products.category = category.category_id";
+    $sql = "SELECT products.id,products.name,products.brand,category.category_name,products.stock,products.price,products.image,products.description FROM products INNER JOIN category ON products.category = category.category_id ORDER BY products.id";
     //PERFORM THE QUERY AND GET RESULT
     $result = mysqli_query($GLOBALS['conn'],$sql);
     return $result;

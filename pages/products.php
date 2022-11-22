@@ -55,8 +55,6 @@ include_once '../includes/header.php';
                     <tbody>
                         <?php
 						$result = getProducts();
-						var_dump($result);
-    die;
 						if(mysqli_num_rows($result) > 0)
 						{
 							//FETCH DATA AS ASSOCIATIVE ARRAY

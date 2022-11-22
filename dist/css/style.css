@@ -94,6 +94,10 @@ a,a:hover{
     max-width: max-content;
 }
 
+#dashboardPage{
+    overflow: auto;
+}
+
 #dashboardPage,#productsPage{
     background: #161832;
 }
@@ -217,6 +221,11 @@ th{
 
 .actionsIcons{
     height: 97px;
+}
+
+.max-vh-50{
+    overflow: auto;
+    max-height: 60vh;
 }
 
 tr{
