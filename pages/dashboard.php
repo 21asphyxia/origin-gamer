@@ -16,41 +16,46 @@ include_once '../includes/header.php';
     <?php include_once '../includes/sidebar.php';?>
     <!-- End of Sidebar -->
     <main class="container mt-5">
-        <div class="mt-5 d-flex justify-content-evenly w-100 mb-5">
-            <div class="ps-3 pe-5 py-3 box">
-                <div class="mb-5">Total Income</div>
-                <div class="fw-bold">12,345 Dh</div>
+        <div class="mt-2 d-flex justify-content-evenly w-100 mb-5 flex-wrap">
+            <div class="ps-3 pe-5 py-3 box mb-4">
+                <div class="fs-5 mb-4 fw-bold">Total Products</div>
+                <div class="fs-6"><?php
+                $sql = "SELECT * FROM products";
+                $result = mysqli_query($conn, $sql);
+                echo mysqli_num_rows($result);
+                ?> Products</div>
             </div>
             <div class="ps-3 pe-5 py-3 box">
-                <div class="mb-5">Total Orders</div>
-                <div class="fw-bold">1234 Orders</div>
+                <div class="fs-5 mb-4 fw-bold">Total Categories</div>
+                <div class="fs-6"><?php
+                $sql = "SELECT * FROM category";
+                $result = mysqli_query($conn, $sql);
+                echo mysqli_num_rows($result);
+                ?> Categories</div>
             </div>
         </div>
-        <div class="box">
-            <span class="fw-bold ps-3">Recent Orders</span>
+        <div class="box max-vh-50">
+            <span class="fw-bold ps-3">Categories Stats</span>
             <div class="table-responsive mt-3">
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th class="text-secondary fs-7 " scope="col">#</th>
-                            <th class="text-secondary fs-7 " scope="col">Id Customer</th>
-                            <th class="text-secondary fs-7 " scope="col">Customer Name</th>
-                            <th class="text-secondary fs-7 " scope="col">City</th>
-                            <th class="text-secondary fs-7 " scope="col">Order Date</th>
-                            <th class="text-secondary fs-7 " scope="col">Status</th>
-                            <th class="text-secondary fs-7 " scope="col">Amount</th>
+                            <th class="text-secondary fs-7 text-center col-2 align-middle" scope="col">#</th>
+                            <th class="text-secondary fs-7 text-center col-5 align-middle" scope="col">Category</th>
+                            <th class="text-secondary fs-7 text-center col-5 align-middle" scope="col">No. of products</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                            <td class=" fs-7 " scope="col">1</td>
-                            <td class=" fs-7 " scope="col">25</td>
-                            <td class=" fs-7 " scope="col">Mouad El Amraoui</td>
-                            <td class=" fs-7 " scope="col">Kenitra</td>
-                            <td class=" fs-7 " scope="col">Order Date</td>
-                            <td class=" fs-7 " scope="col">Paid</td>
-                            <td class=" fs-7 " scope="col">125DH</td>
-                        </tr>
+                        <?php
+                        // sql query to get categories and count of products
+                        $sql = "SELECT category_id,category.category_name, COUNT(products.category) AS product_count FROM category LEFT JOIN products ON category.category_id = products.category GROUP BY category.category_name ORDER BY category_id";
+                        $result = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<tr>
+                            <th class="fs-7 text-center align-middle" scope="row">' . $row['category_id'] . '</th>
+                            <td class="fs-7 text-center align-middle">' . $row['category_name'] . '</td>
+                            <td class="fs-7 text-center align-middle">' . $row['product_count'] . '</td>';}
+                        ?>
                     </tbody>
                 </table>
             </div>

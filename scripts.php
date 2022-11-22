@@ -11,6 +11,7 @@ if(isset($_POST['save']))         saveProduct();
 if(isset($_POST['update']))      updateProduct();
 if(isset($_POST['delete']))      deleteProduct();
 if(isset($_GET['deleteProduct']))      deleteProductbyButton();
+if(isset($_GET['logout']))      logout();
 
 
 
@@ -85,9 +86,14 @@ function register() {
     header('Location: index.php');}
 }
 
+function logout(){
+    session_destroy();
+    header('Location: index.php');
+}
+
 function getProducts(){
     //SQL SELECT QUERY
-    $sql = "SELECT * FROM products ORDER BY id";
+    $sql = "SELECT products.id,products.name,products.brand,category.category_name,products.stock,products.price,products.image,products.description FROM products INNER JOIN category ON products.category = category.category_id ORDER BY products.id";
     //PERFORM THE QUERY AND GET RESULT
     $result = mysqli_query($GLOBALS['conn'],$sql);
     return $result;
@@ -156,9 +162,9 @@ function saveProduct(){
     if (count($errors) == 0 && $imagePath != false) {
         //SQL insert query if there are no errors and image is uploaded
         if($imagePath != "1"){
-            $sql = "INSERT INTO products (name, brand, category, stock, price, image, description) VALUES ('$_POST[productName]', '$_POST[brand]', '$_POST[category]', '$_POST[stock]', '$_POST[price]', '$imagePath', '$_POST[description]')";
+            $sql = "INSERT INTO products (name, brand, category, stock, price, image, description) VALUES ('$_POST[productName]', '$_POST[brand]',(SELECT category_id FROM category WHERE category_name='$_POST[category]'), '$_POST[stock]', '$_POST[price]', '$imagePath', '$_POST[description]')";
         } else{
-            $sql = "INSERT INTO products (name, brand, category, stock, price, description) VALUES ('$_POST[productName]', '$_POST[brand]', '$_POST[category]', '$_POST[stock]', '$_POST[price]', '$_POST[description]')";
+            $sql = "INSERT INTO products (name, brand, category, stock, price, description) VALUES ('$_POST[productName]', '$_POST[brand]', (SELECT category_id FROM category WHERE category_name='$_POST[category]'), '$_POST[stock]', '$_POST[price]', '$_POST[description]')";
         }
         
         if(mysqli_query($GLOBALS['conn'],$sql))
@@ -237,9 +243,9 @@ function updateProduct(){
         }
         //SQL insert query if there are no errors and image is uploaded
         if($imagePath != "1"){
-            $sql = "UPDATE products SET name = '$productName',  brand = '$brand', category = '$category', stock = '$stock', price='$price',image = '$imagePath',description = '$description' WHERE id = '$id'";
+            $sql = "UPDATE products SET name = '$productName',  brand = '$brand', category = (SELECT category_id FROM category WHERE category_name='$_POST[category]'), stock = '$stock', price='$price',image = '$imagePath',description = '$description' WHERE id = '$id'";
         }else{
-            $sql = "UPDATE products SET name = '$productName',  brand = '$brand', category = '$category', stock = '$stock', price='$price',description = '$description' WHERE id = '$id'";
+            $sql = "UPDATE products SET name = '$productName',  brand = '$brand', category = (SELECT category_id FROM category WHERE category_name='$_POST[category]'), stock = '$stock', price='$price',description = '$description' WHERE id = '$id'";
         }
 
         if(mysqli_query($GLOBALS['conn'],$sql))

@@ -77,7 +77,7 @@ include_once '../includes/header.php';
 								echo'" width="72" height="72"></td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["name"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["brand"].'</td>
-								<td class=" fs-7 text-center align-middle" scope="col">'.$row["category"].'</td>
+								<td class=" fs-7 text-center align-middle" scope="col">'.$row["category_name"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["description"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["stock"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["price"].'</td>
@@ -137,24 +137,24 @@ include_once '../includes/header.php';
 					</div>
 					<div class="mb-3">
 						<select class="form-select" name="category" id="category" required>
-							<option <?php if(!isset($row['category'])){
+							<option <?php if(!isset($row['category_name'])){
 							echo "selected";}?> disabled hidden value="">Category</option>
-							<option value="Processors" <?php if(isset($row['category'])){
-							if($row['category'] == "Processors") echo "selected";}?>>Processors</option>
-							<option value="Motherboards" <?php if(isset($row['category'])){
-							if($row['category'] == "Motherboards") echo "selected";}?>>Motherboards</option>
-							<option value="RAM" <?php if(isset($row['category'])){
-							if($row['category'] == "RAM") echo "selected";}?>>RAM</option>
-							<option value="Graphic Cards" <?php if(isset($row['category'])){
-							if($row['category'] == "Graphic Cards") echo "selected";}?>>Graphic Cards</option>
-							<option value="Keyboards" <?php if(isset($row['category'])){
-							if($row['category'] == "Keyboards") echo "selected";}?>>Keyboards</option>
-							<option value="Mice" <?php if(isset($row['category'])){
-							if($row['category'] == "Mice") echo "selected";}?>>Mice</option>
-							<option value="Headsets" <?php if(isset($row['category'])){
-							if($row['category'] == "Headsets") echo "selected";}?>>Headsets</option>
-							<option value="Mousepads" <?php if(isset($row['category'])){
-							if($row['category'] == "Mousepads") echo "selected";}?>>Mousepads</option>
+							<option value="Processors" <?php if(isset($row['category_name'])){
+							if($row['category_name'] == "Processors") echo "selected";}?>>Processors</option>
+							<option value="Motherboards" <?php if(isset($row['category_name'])){
+							if($row['category_name'] == "Motherboards") echo "selected";}?>>Motherboards</option>
+							<option value="RAM" <?php if(isset($row['category_name'])){
+							if($row['category_name'] == "RAM") echo "selected";}?>>RAM</option>
+							<option value="Graphic Cards" <?php if(isset($row['category_name'])){
+							if($row['category_name'] == "Graphic Cards") echo "selected";}?>>Graphic Cards</option>
+							<option value="Keyboards" <?php if(isset($row['category_name'])){
+							if($row['category_name'] == "Keyboards") echo "selected";}?>>Keyboards</option>
+							<option value="Mice" <?php if(isset($row['category_name'])){
+							if($row['category_name'] == "Mice") echo "selected";}?>>Mice</option>
+							<option value="Headsets" <?php if(isset($row['category_name'])){
+							if($row['category_name'] == "Headsets") echo "selected";}?>>Headsets</option>
+							<option value="Mousepads" <?php if(isset($row['category_name'])){
+							if($row['category_name'] == "Mousepads") echo "selected";}?>>Mousepads</option>
 						</select>
 						<?php if(isset($_SESSION['categoryErr'])){
 							echo '<div class="alert alert-danger mt-2" role="alert">'.$_SESSION['categoryErr'].'</div>';
