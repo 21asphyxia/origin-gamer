@@ -272,6 +272,10 @@ function updateProduct(){
         document.getElementById('stock').value = '".$_POST['stock']."';
         document.getElementById('price').value = '".$_POST['price']."';
         document.getElementById('description').value = '".$_POST['description']."';
+        document.getElementById('save-button').classList.add('d-none');
+		document.getElementById('cancel-button').classList.add('d-none');
+        document.getElementById('update-button').classList.remove('d-none');
+        document.getElementById('delete-button').classList.remove('d-none');
         </script>";
         header('location: pages/products.php?editProduct='.$id);
     }

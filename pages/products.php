@@ -226,11 +226,10 @@ include_once '../includes/header.php';
 	
 <?php if(isset($_GET['editProduct'])){echo "<script type = text/javascript>
             document.getElementById('save-button').classList.add('d-none');
-			document.getElementById('cancel-button').classList.add('d-none');
 			
 			$(document).ready(function() {
 			  $('#form').modal('show');
-		  }); </script>'";}
+		  }); </script>";}
 		  
 	if(isset($_SESSION['error'])){
 		echo $_SESSION['error'];
