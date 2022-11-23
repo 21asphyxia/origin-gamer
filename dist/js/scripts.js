@@ -87,6 +87,7 @@ function createProduct() {
     console.log("1");
     // initialiser task form
     initTaskForm();
+    document.getElementById("modalTitle").innerHTML = "Add Product";
     // Afficher le boutton save
     document.getElementById("save-button").classList.remove("d-none");
     document.getElementById("cancel-button").classList.remove("d-none");

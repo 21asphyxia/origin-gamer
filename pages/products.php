@@ -107,7 +107,7 @@ include_once '../includes/header.php';
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header mb-3">
-					<h5 class="modal-title"><?php if(isset($_GET['editProduct'])){echo 'Update';}	else { echo 'Add';}?> Product</h5>
+					<h5 id="modalTitle" class="modal-title"><?php if(isset($_GET['editProduct'])){echo 'Update';}	else { echo 'Add';}?> Product</h5>
 					<button type="button" id="close-button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
