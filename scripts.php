@@ -58,19 +58,20 @@ function register() {
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['emailError']="Invalid email format";
-        header('Location: register.php');
+        header('Location: pages/register.php');
     } else {
         // Check if the email exists
         $sql = "SELECT * FROM users WHERE email = '$email'";
         $result = mysqli_query($GLOBALS['conn'], $sql);
         if (mysqli_num_rows($result) == 1) {
             $_SESSION['emailError']="Email already exists";
-            header('Location: register.php');
+            header('Location: pages/register.php');
         } else {
             // password validation
-            if (strlen($password) < 8) {
-                $_SESSION['passwordError']="Password must be at least 8 characters";
-                header('Location: register.php');
+            if (strlen($password) < 6) {
+                $_SESSION['passwordError']="Password must be at least 6 characters";
+                header('Location: pages/register.php');
+                die();
             } else {
             // Hash the password
             $password = password_hash($password, PASSWORD_DEFAULT);
@@ -78,12 +79,13 @@ function register() {
             $sql = "INSERT INTO users (email, user_password, name) VALUES ('$email', '$password', '$name')";
             if (!mysqli_query($GLOBALS['conn'], $sql)) {
                 $_SESSION['emailError']="Error creating user";
-                header('Location: register.php');
+                header('Location: pages/register.php');
             }
         }
     }
     // Redirect to the dashboard
-    header('Location: index.php');}
+    header('Location: index.php');
+}
 }
 
 function logout(){

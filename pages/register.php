@@ -41,6 +41,11 @@ include_once '../includes/header.php';
             <div class="mb-3">
                 <input class="w-75 d-block mx-auto rounded px-3 py-2" type="password" name="password" id="password" placeholder= "&#xf084;   Password" oninput="validatePassword()">
                 <div id="passwordError" class="w-75 mx-auto text-danger d-none">Please enter a password.</div>
+                <!-- password error -->
+                <?php if (isset($_SESSION['passwordError'])){
+                    echo "<div class='w-75 mx-auto text-danger' role='alert'>".$_SESSION['passwordError']."</div>"; 
+                    unset($_SESSION['passwordError']);
+                } ?>
             </div>
 
             <div class="mb-5">
