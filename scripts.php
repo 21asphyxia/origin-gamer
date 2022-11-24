@@ -291,7 +291,7 @@ function updateProduct(){
 
 function deleteProduct(){
     // Delete existing image from the uploads folder
-    $id = $_GET['productId'];
+    $id = $_POST['productId'];
     $sql = "SELECT image FROM products WHERE id = '$id'";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
