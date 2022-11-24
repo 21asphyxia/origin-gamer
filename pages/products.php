@@ -78,7 +78,7 @@ include_once '../includes/header.php';
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["name"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["brand"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["category_name"].'</td>
-								<td class=" fs-7 text-center align-middle" scope="col">'.$row["description"].'</td>
+								<td class=" fs-7 text-center align-middle td-truncate" scope="col">'.$row["description"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["stock"].'</td>
 								<td class=" fs-7 text-center align-middle" scope="col">'.$row["price"].'</td>
 								<td class="actionsIcons d-flex justify-content-around align-items-center">

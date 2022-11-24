@@ -236,6 +236,7 @@ function updateProduct(){
 
     //Check if there are errors
     if (count($errors) == 0 && $imagePath != false) {
+        if($imagePath != "1"){
         // Delete existing image from the uploads folder
         $sql = "SELECT image FROM products WHERE id = '$id'";
         $result = mysqli_query($GLOBALS['conn'], $sql);
@@ -244,7 +245,6 @@ function updateProduct(){
             unlink($row['image']);
         }
         //SQL insert query if there are no errors and image is uploaded
-        if($imagePath != "1"){
             $sql = "UPDATE products SET name = '$productName',  brand = '$brand', category = (SELECT category_id FROM category WHERE category_name='$_POST[category]'), stock = '$stock', price='$price',image = '$imagePath',description = '$description' WHERE id = '$id'";
         }else{
             $sql = "UPDATE products SET name = '$productName',  brand = '$brand', category = (SELECT category_id FROM category WHERE category_name='$_POST[category]'), stock = '$stock', price='$price',description = '$description' WHERE id = '$id'";
